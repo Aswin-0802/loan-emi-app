@@ -8,30 +8,32 @@
     @if ($emiDetails->isEmpty())
         <div class="alert alert-warning">No EMI data available.</div>
     @else
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Client ID</th>
-                    @foreach ($emiDetails->first() as $key => $value)
-                        @if ($key !== 'clientid')
-                            <th>{{ $key }}</th>
-                        @endif
-                    @endforeach
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($emiDetails as $emi)
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
                     <tr>
-                        <td>{{ $emi->clientid }}</td>
-                        @foreach ($emi as $key => $value)
+                        <th>Client ID</th>
+                        @foreach ($emiDetails->first() as $key => $value)
                             @if ($key !== 'clientid')
-                                <td>{{ number_format($value, 2) }}</td>
+                                <th>{{ $key }}</th>
                             @endif
                         @endforeach
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($emiDetails as $emi)
+                        <tr>
+                            <td>{{ $emi->clientid }}</td>
+                            @foreach ($emi as $key => $value)
+                                @if ($key !== 'clientid')
+                                    <td>{{ number_format($value, 2) }}</td>
+                                @endif
+                            @endforeach
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     @endif
 </div>
 @endsection

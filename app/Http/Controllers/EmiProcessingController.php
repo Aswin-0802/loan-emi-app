@@ -11,8 +11,7 @@ class EmiProcessingController extends Controller
 {
     public function showForm()
     {
-        $emiDetails = DB::table('emi_details')->get();
-    return view('emi.process', compact('emiDetails'));
+        return view('emi.process');
     }
 
     public function viewEmiDetails()
